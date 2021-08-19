@@ -9,4 +9,12 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    - if !student_signed_in? && !teacher_signed_in? && !admin_signed_in?
+      = link_to '管理者ログイン', new_admin_session_path
+      = link_to '講師ログイン', new_teacher_session_path
+      = link_to '生徒ログイン', new_student_session_path
+
+    - if student_signed_in?
+      = link_to '生徒ログアウト', destroy_student_session_path, method: :delete
+
     = yield
