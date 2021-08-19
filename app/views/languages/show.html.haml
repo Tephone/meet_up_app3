@@ -1,0 +1,5 @@
+%h2 言語一覧
+- @languages.each do |language|
+  %p= language.name
+
+= paginate @languages
