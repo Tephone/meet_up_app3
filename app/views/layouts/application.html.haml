@@ -14,7 +14,19 @@
       = link_to '講師ログイン', new_teacher_session_path
       = link_to '生徒ログイン', new_student_session_path
 
+    - if admin_signed_in?
+      = link_to 'マイページ', admin_path
+      = link_to '管理者ログアウト', destroy_admin_session_path, method: :delete
+
+    - if teacher_signed_in?
+      = link_to 'マイページ', teacher_path(current_teacher)
+      = link_to '講師ログアウト', destroy_teacher_session_path, method: :delete
+      
     - if student_signed_in?
+      = link_to 'マイページ', student_path(current_student)
       = link_to '生徒ログアウト', destroy_student_session_path, method: :delete
+    
+    %p= notice
+    %p= alert
 
     = yield

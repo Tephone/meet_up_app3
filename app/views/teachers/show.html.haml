@@ -1,0 +1,8 @@
+%h2 マイページ
+%p= @teacher.name
+%p= @teacher.email
+%p= t("language.#{@teacher.language.name}")
+%p= @teacher.profile
+%p= @teacher.image
+
+= link_to '編集', edit_teacher_registration_path

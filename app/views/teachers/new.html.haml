@@ -1,0 +1,24 @@
+%h2 講師作成画面
+= form_with(model: @teacher) do |f|
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name, autofocus: true
+  .field
+    = f.label :email
+    %br
+    = f.email_field :email
+  .field
+    = f.label :language_id
+    %br
+    = f.text_field :language_id
+  .field
+    = f.label :password
+    %br
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation
+  = f.submit
+= link_to '戻る', :back
