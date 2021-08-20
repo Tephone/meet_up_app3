@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resource :top, only: %i[show]
   resource :language, only: %i[show]
   resource :admin, only: %i[show]
+  namespace :teachers do
+    resource :lesson, only: [:show]
+  end
   resources :teachers, only: %i[ index new create show destroy]
   resources :students, only: %i[show]
+  resources :lessons
 end

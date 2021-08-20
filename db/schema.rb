@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_120526) do
+ActiveRecord::Schema.define(version: 2021_08_20_033519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2021_08_19_120526) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_languages_on_name", unique: true
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.datetime "started_at", null: false
+    t.text "content", default: "", null: false
+    t.text "zoom_url", default: "https://zoom.us/jp-jp/meetings.html", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -71,5 +81,6 @@ ActiveRecord::Schema.define(version: 2021_08_19_120526) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "lessons", "teachers"
   add_foreign_key "teachers", "languages"
 end

@@ -5,3 +5,5 @@
     - if admin_signed_in?
       = link_to '削除', teacher_path(teacher), method: :delete
       = link_to '代理ログイン', admin_sign_in_as_teachers_path(teacher: teacher), method: :post
+
+= paginate @teachers

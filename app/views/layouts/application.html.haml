@@ -20,6 +20,7 @@
 
     - if teacher_signed_in?
       = link_to 'マイページ', teacher_path(current_teacher)
+      = link_to 'マイレッスン', teachers_lesson_path(current_teacher)
       = link_to '講師ログアウト', destroy_teacher_session_path, method: :delete
       
     - if student_signed_in?

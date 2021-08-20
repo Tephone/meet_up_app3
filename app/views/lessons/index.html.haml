@@ -1,0 +1,9 @@
+%h2 レッスン一覧
+- @lessons.each do |lesson|
+  %p= l lesson.started_at
+  %p
+    #{lesson.teacher.name}/
+    = t("language.#{lesson.teacher.language.name}")
+= link_to '講師のレッスン', teachers_lesson_path
+
+= paginate @lessons

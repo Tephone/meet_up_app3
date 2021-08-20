@@ -1,0 +1,10 @@
+%p 開始: #{ l @lesson.started_at }
+%p 講師: #{@lesson.teacher.name}
+%p
+  言語: 
+  = t("language.#{@lesson.teacher.language.name}")
+%p zoom_url: #{@lesson.zoom_url}
+- if @lesson.content.present?
+  %p --講義内容--
+  %p= @lesson.content
+= link_to '編集', edit_lesson_path if teacher_signed_in?

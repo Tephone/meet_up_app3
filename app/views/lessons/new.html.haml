@@ -1,0 +1,4 @@
+%h2 レッスン作成画面
+= form_with(model: @lesson) do |f|
+  = f.datetime_field :started_at, min: Date.current
+  = f.submit
