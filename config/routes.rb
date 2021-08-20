@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :teachers, only: %i[ index new create show destroy]
   resources :students, only: %i[show]
   resources :lessons
+  resources :purchase_tickets, only: %i[new create]
 end

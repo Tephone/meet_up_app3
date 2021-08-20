@@ -24,6 +24,7 @@
       = link_to '講師ログアウト', destroy_teacher_session_path, method: :delete
       
     - if student_signed_in?
+      = link_to 'レッスン一覧', lessons_path
       = link_to 'マイページ', student_path(current_student)
       = link_to '生徒ログアウト', destroy_student_session_path, method: :delete
     
