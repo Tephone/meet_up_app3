@@ -5,4 +5,6 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :purchase_tickets
   has_many :tickets, through: :purchase_tickets, source: :ticket
+  has_many :lesson_reservations
+  has_many :lessons, through: :lesson_reservations, source: :lesson
 end

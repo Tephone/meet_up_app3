@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
   before_action :set_lesson, only: %i[edit update destroy]
   
   def index
-    @lessons = Lesson.after_current.page(params[:id])
+    @lessons = Lesson.not_reserved.after_current.page(params[:id])
   end
 
   def new

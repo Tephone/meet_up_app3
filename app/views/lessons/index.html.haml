@@ -4,5 +4,6 @@
   %p
     #{lesson.teacher.name}/
     = t("language.#{lesson.teacher.language.name}")
+  = render 'lesson_reservations/lesson_reservation_form', lesson: lesson
 
 = paginate @lessons

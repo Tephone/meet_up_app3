@@ -1,0 +1,5 @@
+%h2 マイレッスン
+- @lessons.each do |lesson|
+  = l lesson.started_at
+  = link_to '詳細', lesson_path(lesson)
+  %p= render 'lesson_reservations/lesson_reservation_form', lesson: lesson
