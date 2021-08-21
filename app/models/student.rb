@@ -7,4 +7,10 @@ class Student < ApplicationRecord
   has_many :tickets, through: :purchase_tickets, source: :ticket
   has_many :lesson_reservations
   has_many :lessons, through: :lesson_reservations, source: :lesson
+
+  def remaining_lesson_count
+    self_lesson_count = self.tickets.sum(:lesson_count)
+    self_reservations = self.lesson_reservations
+    self_lesson_count - self_reservations.count
+  end
 end

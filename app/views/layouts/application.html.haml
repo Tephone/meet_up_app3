@@ -19,14 +19,14 @@
       = link_to '管理者ログアウト', destroy_admin_session_path, method: :delete
 
     - if teacher_signed_in?
-      = link_to 'マイページ', teacher_path(current_teacher)
       = link_to 'マイレッスン', teachers_lesson_path
+      = link_to 'マイページ', teacher_path(current_teacher)
       = link_to '講師ログアウト', destroy_teacher_session_path, method: :delete
       
     - if student_signed_in?
       = link_to 'レッスン一覧', lessons_path
-      = link_to 'マイページ', student_path(current_student)
       = link_to 'マイレッスン', students_lesson_path
+      = link_to 'マイページ', student_path(current_student)
       = link_to '生徒ログアウト', destroy_student_session_path, method: :delete
     
     %p= notice

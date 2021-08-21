@@ -1,8 +1,12 @@
 class LessonReservationsController < ApplicationController
   def create
-    lesson_reservation = current_student.lesson_reservations.new(lesson_id: params[:lesson_reservation][:lesson_id])
-    lesson_reservation.save!
-    redirect_to students_lesson_path, notice: 'レッスンを予約しました'
+    if current_student.remaining_lesson_count <= 0
+      redirect_to lessons_path, alert: 'チケットを購入してください'
+    else
+      lesson_reservation = current_student.lesson_reservations.new(lesson_id: params[:lesson_reservation][:lesson_id])
+      lesson_reservation.save!
+      redirect_to students_lesson_path, notice: 'レッスンを予約しました'
+    end
   end
 
   def destroy

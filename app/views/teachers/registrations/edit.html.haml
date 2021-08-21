@@ -14,7 +14,7 @@
   .field
     = f.label :language_id
     %br/
-    = f.text_field :language_id, autofocus: true, autocomplete: "language_id"
+    = f.select :language_id, languages_option, autofocus: true, autocomplete: "language_id"
   .field
     = f.label :profile
     %br/

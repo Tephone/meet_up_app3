@@ -22,7 +22,7 @@ class Admins::SessionsController < Devise::SessionsController
     if admin_signed_in?
       @teacher = Teacher.find(params[:teacher])
       sign_in @teacher
-      redirect_to admin_path, notice: '代理ログインしました'
+      redirect_to teacher_path(@teacher), notice: '代理ログインしました'
     else
       redirect_to top_path, alert: '代理ログインは管理者しかできません'
     end

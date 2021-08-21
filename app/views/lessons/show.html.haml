@@ -1,5 +1,6 @@
 %p 開始: #{ l @lesson.started_at }
 %p 講師: #{@lesson.teacher.name}
+%p= "生徒: #{@lesson.lesson_reservation.student.name}" if @lesson.lesson_reservation.present?
 %p
   言語: 
   = t("language.#{@lesson.teacher.language.name}")
