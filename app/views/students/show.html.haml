@@ -1,0 +1,6 @@
+%h2 マイページ
+%p= @student.name
+%p= @student.email
+%p= @student.remaining_lesson_count
+= link_to '編集', edit_student_registration_path
+= link_to 'チケットを購入する', new_purchase_ticket_path

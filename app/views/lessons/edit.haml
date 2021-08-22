@@ -1,0 +1,6 @@
+%h2 レッスン編集画面
+= form_with(model: @lesson) do |f|
+  %p= f.datetime_field :started_at
+  %p --講義内容--
+  %p= f.text_area :content
+  = f.submit

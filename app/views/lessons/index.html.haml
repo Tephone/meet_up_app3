@@ -1,0 +1,16 @@
+%h2 レッスン一覧
+
+= form_with(url: lessons_path, method: :get) do |f|
+  = f.text_field :teacher_name, placeholder: '--講師名--'
+  = f.select :language_id, languages_option, include_blank: '--言語--'
+  = f.date_field :date
+  = f.submit '検索する'
+
+- @lessons.each do |lesson|
+  %p= l lesson.started_at
+  %p
+    #{lesson.teacher.name}/
+    = t("language.#{lesson.teacher.language.name}")
+  = render 'lesson_reservations/lesson_reservation_form', lesson: lesson
+
+= paginate @lessons
