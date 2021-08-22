@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/inbox' if Rails.env.development?
   devise_for :admins, controllers: { sessions: 'admins/sessions'}
   devise_scope :admin do
     post 'admins/sign_in_as_tesachers', to: 'admins/sessions#sign_in_as_teachers', as: :admin_sign_in_as_teachers

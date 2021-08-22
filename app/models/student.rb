@@ -3,9 +3,9 @@ class Student < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :purchase_tickets
+  has_many :purchase_tickets, dependent: :destroy
   has_many :tickets, through: :purchase_tickets, source: :ticket
-  has_many :lesson_reservations
+  has_many :lesson_reservations, dependent: :destroy
   has_many :lessons, through: :lesson_reservations, source: :lesson
 
   def remaining_lesson_count

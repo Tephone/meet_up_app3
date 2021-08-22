@@ -1,0 +1,4 @@
+%h2 予約確認メール 
+%p 開始: #{ l @lesson_reservation.lesson.started_at}
+%p 講師: #{@lesson_reservation.lesson.teacher.name}
+%p zoom_url: #{ @lesson_reservation.lesson.zoom_url}

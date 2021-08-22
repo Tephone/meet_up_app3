@@ -3,6 +3,7 @@ ja:
     models:
       teacher: 講師
       student: 生徒
+      lesson: レッスン
     attributes:
       teacher:
         name: 名前
@@ -11,3 +12,5 @@ ja:
         image: 画像
       student:
         name: 名前
+      lesson:
+        started_at: 開始時刻
