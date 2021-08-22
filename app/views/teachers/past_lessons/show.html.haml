@@ -1,0 +1,11 @@
+%h2 完了済レッスン一覧
+- @lessons.each do |lesson|
+  %p
+    = l lesson.started_at
+    = link_to '詳細', lesson_path(lesson)
+    - if lesson.review.present?
+      = link_to 'レビューを確認する', review_path(lesson.review)
+    -else
+      = link_to 'レビューする', new_review_path(lesson: lesson)
+
+= paginate @lessons

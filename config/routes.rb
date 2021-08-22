@@ -16,13 +16,16 @@ Rails.application.routes.draw do
   resource :admin, only: %i[show]
   namespace :teachers do
     resource :lesson, only: [:show]
+    resource :past_lesson, only: %i[show]
   end
   resources :teachers, only: %i[index new create show destroy]
   namespace :students do
     resource :lesson, only: %i[show]
+    resource :past_lesson, only: %i[show]
   end
   resources :students, only: %i[show]
   resources :lessons
   resources :purchase_tickets, only: %i[new create]
   resources :lesson_reservations, only: %i[create destroy]
+  resources :reviews, only: %i[new create show destroy]
 end
