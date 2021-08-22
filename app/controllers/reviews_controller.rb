@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   def create
     @review = current_teacher.reviews.new(review_params)
     if @review.save
+      NoticeMailer.review_notice_to_student(@review).deliver_now
       redirect_to teachers_past_lesson_path, notice: 'レビューを作成しました'
     else
       render :new
