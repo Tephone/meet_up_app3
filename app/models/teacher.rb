@@ -5,5 +5,6 @@ class Teacher < ApplicationRecord
          :recoverable, :rememberable, :validatable
   mount_uploader :image, ImageUploader
   has_many :lessons, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   belongs_to :language
 end

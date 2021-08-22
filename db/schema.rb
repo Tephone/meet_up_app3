@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_21_130954) do
+ActiveRecord::Schema.define(version: 2021_08_22_162132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,16 @@ ActiveRecord::Schema.define(version: 2021_08_21_130954) do
     t.index ["ticket_id"], name: "index_purchase_tickets_on_ticket_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "teacher_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lesson_id"], name: "index_reviews_on_lesson_id"
+    t.index ["teacher_id", "lesson_id"], name: "index_reviews_on_teacher_id_and_lesson_id", unique: true
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -85,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_08_21_130954) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
     t.text "profile", default: "", null: false
-    t.text "image", default: "", null: false
+    t.text "image"
     t.bigint "language_id", null: false
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["language_id"], name: "index_teachers_on_language_id"
@@ -104,5 +114,7 @@ ActiveRecord::Schema.define(version: 2021_08_21_130954) do
   add_foreign_key "lessons", "teachers"
   add_foreign_key "purchase_tickets", "students"
   add_foreign_key "purchase_tickets", "tickets"
+  add_foreign_key "reviews", "lessons"
+  add_foreign_key "reviews", "teachers"
   add_foreign_key "teachers", "languages"
 end
