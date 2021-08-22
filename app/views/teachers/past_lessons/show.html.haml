@@ -1,0 +1,8 @@
+%h2 完了済レッスン一覧
+- @lessons.each do |lesson|
+  %p
+    = l lesson.started_at
+    = link_to '詳細', lesson_path(lesson)
+    = link_to "#{lesson.lesson_reservation.student.name}さんのレッスン履歴", students_past_lesson_path(student: lesson.lesson_reservation.student)
+
+= paginate @lessons

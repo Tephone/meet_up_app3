@@ -2,5 +2,6 @@
 %p= @student.name
 %p= @student.email
 %p= @student.remaining_lesson_count
-= link_to '編集', edit_student_registration_path
-= link_to 'チケットを購入する', new_purchase_ticket_path
+%p= link_to '編集', edit_student_registration_path
+%p= link_to 'レッスン履歴', students_past_lesson_path(student: @student)
+%p= link_to 'チケットを購入する', new_purchase_ticket_path
