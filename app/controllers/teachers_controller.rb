@@ -7,7 +7,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.new
   end
 
-  def create 
+  def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
       redirect_to admin_path, notice: '講師を作成しました'
@@ -33,6 +33,6 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit %i[ name email language_id profile image password password_confirmation]
+    params.require(:teacher).permit %i[name email language_id profile image password password_confirmation]
   end
 end
