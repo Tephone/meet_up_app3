@@ -1,5 +1,5 @@
 %h2 言語一覧
 - @languages.each do |language|
-  %p= language.name
+  %p= t("language.#{language.name}")
 
 = paginate @languages

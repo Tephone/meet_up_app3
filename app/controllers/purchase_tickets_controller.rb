@@ -1,4 +1,6 @@
 class PurchaseTicketsController < ApplicationController
+  before_action :authenticate_student!
+
   def new
     @purchase_ticket = current_student.purchase_tickets.new
   end
