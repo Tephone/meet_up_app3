@@ -5,3 +5,4 @@
 = form_with(model: @lesson) do |f|
   = f.datetime_field :started_at, min: Date.current
   = f.submit
+= link_to '複数レッスンを同時作成する', new_teachers_multiple_lesson_path
