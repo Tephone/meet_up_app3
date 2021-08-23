@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resource :lesson, only: [:show]
     resource :past_lesson, only: %i[show]
     resources :multiple_lessons, only: %i[new create]
+    resources :specific_range_lessons, only: %i[new create]
   end
   resources :teachers, only: %i[index new create show destroy]
   namespace :students do
