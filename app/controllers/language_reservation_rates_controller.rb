@@ -1,4 +1,6 @@
 class LanguageReservationRatesController < ApplicationController
+  before_action :authenticate_admin!
+
   def show
     @language = Language.find(params[:language])
     @today = Date.current

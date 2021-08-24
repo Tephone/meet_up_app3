@@ -32,4 +32,5 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[new create show destroy]
   resource :teacher_reservation_rates, only: %i[show]
   resource :language_reservation_rates, only: %i[show]
+  resource :time_reservation_rates, only: %i[show]
 end

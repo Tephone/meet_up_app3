@@ -1,4 +1,6 @@
 class TeacherReservationRatesController < ApplicationController
+  before_action :authenticate_admin!
+  
   def show
     @teacher = Teacher.find(params[:teacher])
     @today = Date.current
