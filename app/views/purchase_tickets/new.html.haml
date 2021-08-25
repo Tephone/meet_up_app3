@@ -1,5 +1,5 @@
 %h2 チケット購入画面
-- tickets = Ticket.all.map { |ticket| ["#{ticket.fee}円: #{ticket.lesson_count}回分", ticket.id] }
+- tickets = Ticket.where(fee: [2200,  5500, 8250]).map { |ticket| ["#{ticket.fee}円: #{ticket.lesson_count}回分", ticket.id] }
 = form_with(model: @purchase_ticket) do |f|
   = f.select :ticket_id, tickets
   = f.submit
