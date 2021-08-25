@@ -1,0 +1,15 @@
+%h2 #{@teacher.name}さん
+%p #{@today.month}月の予約率: #{reservation_rate_for_month(@teacher, @today)}%
+%p ※測定不能の場合「--」と表示
+%table
+  - @days.each do |day|
+    %th= day
+  - @dates_for_week.each do |week|
+    %tr
+      - week.each do |date|
+        - if date == @from
+          - date.wday.times do
+            %td
+        %td
+          %p= date.day
+          %p= reservation_rate_for_day(@teacher, date)

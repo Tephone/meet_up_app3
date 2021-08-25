@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Students::RegistrationsController < Devise::RegistrationsController
+  around_action :wrap_in_transaction, only: :create
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  after_action :create_purchase_ticket, only: %i[create]
+  # after_action :create_purchase_ticket, only: %i[create]
 
   # GET /resource/sign_up
   # def new
@@ -63,6 +64,13 @@ class Students::RegistrationsController < Devise::RegistrationsController
 
   def create_purchase_ticket
     ticket_id = Ticket.find_by(fee: 2200).id
-    current_student.purchase_tickets.create(ticket_id: ticket_id)
+    current_student.purchase_tickets.create!(ticket_id: ticket_id)
+  end
+
+  def wrap_in_transaction
+    ActiveRecord::Base.transaction do
+      yield
+      create_purchase_ticket
+    end
   end
 end

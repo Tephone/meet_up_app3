@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   namespace :teachers do
     resource :lesson, only: [:show]
     resource :past_lesson, only: %i[show]
+    resources :multiple_lessons, only: %i[new create]
+    resources :specific_range_lessons, only: %i[new create]
   end
   resources :teachers, only: %i[index new create show destroy]
   namespace :students do
@@ -28,4 +30,7 @@ Rails.application.routes.draw do
   resources :purchase_tickets, only: %i[new create]
   resources :lesson_reservations, only: %i[create destroy]
   resources :reviews, only: %i[new create show destroy]
+  resource :teacher_reservation_rates, only: %i[show]
+  resource :language_reservation_rates, only: %i[show]
+  resource :time_reservation_rates, only: %i[show]
 end

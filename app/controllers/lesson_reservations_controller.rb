@@ -1,4 +1,6 @@
 class LessonReservationsController < ApplicationController
+  before_action :authenticate_student!
+
   def create
     if current_student.remaining_lesson_count <= 0
       redirect_to lessons_path, alert: 'チケットを購入してください'

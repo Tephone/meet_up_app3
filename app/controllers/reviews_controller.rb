@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_teacher!, only: %i[new create destroy]
+
   def new
     @review = current_teacher.reviews.new(lesson_id: params[:lesson])
   end
