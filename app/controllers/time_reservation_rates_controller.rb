@@ -1,6 +1,6 @@
 class TimeReservationRatesController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
     @today = Date.current
     @from = @today.beginning_of_month

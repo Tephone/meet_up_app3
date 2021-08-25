@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_admin! , only: %i[index new create destroy]
+  before_action :authenticate_admin!, only: %i[index new create destroy]
   before_action :authenticate_teacher!, only: %i[show], unless: :admin_signed_in?
 
   def index
