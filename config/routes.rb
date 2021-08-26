@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   resource :teacher_reservation_rates, only: %i[show]
   resource :language_reservation_rates, only: %i[show]
   resource :time_reservation_rates, only: %i[show]
+  resources :choice_monthly_plans
 end

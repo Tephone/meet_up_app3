@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_162132) do
+ActiveRecord::Schema.define(version: 2021_08_25_055743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2021_08_22_162132) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "choice_monthly_plans", force: :cascade do |t|
+    t.bigint "monthly_plan_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["monthly_plan_id", "student_id"], name: "index_choice_monthly_plans_on_monthly_plan_id_and_student_id", unique: true
+    t.index ["student_id"], name: "index_choice_monthly_plans_on_student_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -53,11 +62,21 @@ ActiveRecord::Schema.define(version: 2021_08_22_162132) do
     t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
 
+  create_table "monthly_plans", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "ticket_id"], name: "index_monthly_plans_on_name_and_ticket_id", unique: true
+    t.index ["ticket_id"], name: "index_monthly_plans_on_ticket_id"
+  end
+
   create_table "purchase_tickets", force: :cascade do |t|
     t.bigint "ticket_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "deadline", default: "3021-08-25", null: false
     t.index ["student_id"], name: "index_purchase_tickets_on_student_id"
     t.index ["ticket_id"], name: "index_purchase_tickets_on_ticket_id"
   end
@@ -109,9 +128,12 @@ ActiveRecord::Schema.define(version: 2021_08_22_162132) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "choice_monthly_plans", "monthly_plans"
+  add_foreign_key "choice_monthly_plans", "students"
   add_foreign_key "lesson_reservations", "lessons"
   add_foreign_key "lesson_reservations", "students"
   add_foreign_key "lessons", "teachers"
+  add_foreign_key "monthly_plans", "tickets"
   add_foreign_key "purchase_tickets", "students"
   add_foreign_key "purchase_tickets", "tickets"
   add_foreign_key "reviews", "lessons"

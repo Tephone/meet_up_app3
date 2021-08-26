@@ -1,0 +1,4 @@
+%h2 現在のプラン
+%p= @choice_monthly_plan.monthly_plan.name
+%p= link_to 'プランを変更する', edit_choice_monthly_plan_path
+%p= link_to 'プランを休止する', choice_monthly_plan_path, method: :delete

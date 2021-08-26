@@ -5,6 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Ticket.create(fee: 7000, lesson_count: 5)
+Ticket.create(fee: 9500, lesson_count: 7)
+Ticket.create(fee: 12000, lesson_count: 10)
+
+MonthlyPlan.create(name: 'light', ticket_id: Ticket.find_by(fee: 7000).id)
+MonthlyPlan.create(name: 'standard', ticket_id: Ticket.find_by(fee: 9500).id)
+MonthlyPlan.create(name: 'heavy', ticket_id: Ticket.find_by(fee: 12000).id)
+
 Admin.create(email: 'admin@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa')
 
 Language.create(name: 'thai')

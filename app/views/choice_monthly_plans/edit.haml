@@ -1,0 +1,4 @@
+%h2 定期プラン変更画面
+= form_with(model: @choice_monthly_plan) do |f|
+  = f.select :monthly_plan_id, MonthlyPlan.all.map{ |plan| [plan.name, plan.id]}
+  = f.submit '変更する'
